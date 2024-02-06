@@ -4,7 +4,6 @@ import { containerSize } from './constants'
 import { containerType} from './constants'
 import Button from './components/common/Button/Index'
 import RateList from './components/Rate/RateList'
-import toast from 'react-hot-toast'
 import {PuffLoader} from "react-spinners"
 import { useRateStore } from './state/Rate'
 
@@ -28,7 +27,7 @@ function App() {
        rates.push(key)
       }
     } catch (error:any) {
-      toast.error(error?.message)
+       throw new Error(error?.message)
     }
   }
   handleGetRate()
