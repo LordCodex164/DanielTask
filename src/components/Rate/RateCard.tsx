@@ -18,13 +18,9 @@ const RateCard = ({item}: RateCardProps) => {
                         {item.origin_port_code}-{item.destination_port_code}
                     </span>
                  </div>
-
-                
                     <div>
                         <hr className='mb-[24px]'/>
                     </div>
-                
-
                  <div className='grid grid-cols-3'>
                     <span className='inline-flex flex-col'>
                         <p>Sailing Date</p>
