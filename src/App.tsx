@@ -9,7 +9,6 @@ import {PuffLoader} from "react-spinners"
 import { useRateStore } from './state/Rate'
 
 function App() {
-
   const carrierNames = ["COSCO", "PIL", "CMA CGM", "MAERSK", "ONE", "OOCL", "EVERGREEN", "ESL", "ZIM"]
   const [carrierName, setCarrierName] = useState<string>("COSCO")
   const[sizeSelected, setSizeSelected] = useState(false)
@@ -27,7 +26,6 @@ function App() {
       let rates = []
       for (let key of data){
        rates.push(key)
-      //  setRateData(rates as unknown as FreightifyOffer[])
       }
     } catch (error:any) {
       toast.error(error?.message)
