@@ -32,7 +32,7 @@ const RateCard = ({item}: RateCardProps) => {
                     </span>
                     <span className='inline-flex flex-col'>
                         <p>Free Days</p>
-                       {item.demurrage_days}
+                       {item.demurrage_days} + {item.detention_days}
                     </span>
                  </div>
 
