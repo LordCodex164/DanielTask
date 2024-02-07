@@ -10,12 +10,15 @@ import {PuffLoader} from "react-spinners"
 import { useRateStore } from '../../state/Rate'
 
 const RateComponent = () => {
-    const carrierNames = ["COSCO", "PIL", "CMA CGM", "MAERSK", "ONE", "OOCL", "EVERGREEN", "ESL", "ZIM"]
+
+    const buttonCarrierNames = ["COSCO", "PIL", "CMA CGM", "MAERSK", "ONE", "OOCL", "EVERGREEN", "ESL", "ZIM"]
+    
     const [carrierName, setCarrierName] = useState<string>("COSCO")
     const[sizeSelected, setSizeSelected] = useState(false)
     const[typeSelected, setTypeSelected] = useState(false)
     const [selectedSizeValue, setSelectedSizeValue] = useState("20FT")
     const [selectedTypeValue, setSelectedTypeValue] = useState("DRY")
+
     const rateDataState = useRateStore((state) => state.rateData)
     const fetchRateData = useRateStore((state) => state.fetchRateData)
     const isLoading = useRateStore((state) => state.isLoading)
@@ -54,7 +57,7 @@ const RateComponent = () => {
            <DropDownComponent selected={typeSelected} setSelected={setTypeSelected} selectedValue={selectedTypeValue} setSelectedValue={setSelectedTypeValue} options={containerType}/>
         </div>
         <div className='over overflow-x-scroll flex gap-5'>
-           {carrierNames.map((name:string, i:any) => (
+           {buttonCarrierNames.map((name:string, i:any) => (
             <Button isActive={carrierName === name} key={i} onClick={() => handleButtonChange(name)} isLoading={false} text={name}>
                {name}
             </Button>
