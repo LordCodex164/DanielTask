@@ -5,6 +5,7 @@ interface RateCardProps{
 }
 
 const RateCard = ({item}: RateCardProps) => {
+    const freeDays = item.demurrage_days + item.detention_days
     return (
         <div className='p-5 rounded-[10px] cursor-pointer border-[2px] lg:max-w-[312px] lg:min-w-full xl:min-w-[312px] xl:max-w-full md:min-h-[199px]  border-solid border-[#E5E7EB] hover:border-[#139C33]'>
             <div className='flex flex-col'>
@@ -31,7 +32,7 @@ const RateCard = ({item}: RateCardProps) => {
                 </span>
                 <span className='inline-flex flex-col'>
                     <p>Free Days</p>
-                    {item.demurrage_days} + {item.detention_days}
+                    {freeDays}
                 </span>
                 </div>
             </div>
