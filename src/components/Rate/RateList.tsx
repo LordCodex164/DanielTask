@@ -18,7 +18,7 @@ const RateList = ({name, data} : RateListProps) => {
     }
 
     useEffect(() => {
-       const filteredRates = data?.filter((item:any) => item.carrier_name === name).slice(0, visibleRates)
+       const filteredRates = data? data.filter((item:any) => item.carrier_name === name).slice(0, visibleRates) : null
        setSlicedData(filteredRates)
     }, [name])
 
@@ -26,11 +26,11 @@ const RateList = ({name, data} : RateListProps) => {
     <div>
      {data.length ?
        <div className='grid w-full place-content-center place-items-stretch card-rates pt-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5'>
-       {data.filter((item:any) => item.carrier_name === name).slice(0, visibleRates).map((item:any, i:any) => (
+       {data ? data.filter((item:any) => item.carrier_name === name).slice(0, visibleRates).map((item:any, i:any) => (
         <div key={i}> 
             <RateCard key={i} item={item}/>
         </div>
-       ))}
+       )) : null}
     </div>
     : (
         <div>

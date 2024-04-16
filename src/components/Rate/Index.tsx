@@ -8,8 +8,14 @@ import RateList from '../../components/Rate/RateList'
 import toast from 'react-hot-toast'
 import {PuffLoader} from "react-spinners"
 import { useRateStore } from '../../state/Rate'
+import { useSelector, useDispatch } from 'react-redux'
+import { getRates } from '../../backend-services/Rates'
+import rates from '../../reducers/rates'
+import { getRatesAction } from '../../actions'
 
 const RateComponent = () => {
+
+  const dispatch = useDispatch()
 
     const buttonCarrierNames = ["COSCO", "PIL", "CMA CGM", "MAERSK", "ONE", "OOCL", "EVERGREEN", "ESL", "ZIM"]
     
@@ -19,24 +25,34 @@ const RateComponent = () => {
     const [selectedSizeValue, setSelectedSizeValue] = useState("20FT")
     const [selectedTypeValue, setSelectedTypeValue] = useState("DRY")
 
-    const rateDataState = useRateStore((state) => state.rateData)
-    const fetchRateData = useRateStore((state) => state.fetchRateData)
-    const isLoading = useRateStore((state) => state.isLoading)
-  
+    // const rateDataState = useRateStore((state) => state.rateData)
+    // const fetchRateData = useRateStore((state) => state.fetchRateData)
+    // const isLoading = useRateStore((state) => state.isLoading)
+
+    const rateState = useSelector((state:any) => state.rates.rateState)
+    const isLoading = useSelector((state:any) => state.rates.isLoading)
+    const error = useSelector((state:any) => state.rates.error) 
+    
     useEffect(() => {
-    const handleGetRate = async () => {
-      try {
-        const data = await fetchRateData(selectedSizeValue, selectedTypeValue)
-        let rates = []
-        for (let key of data){
-         rates.push(key)
-        }
-      } catch (error:any) {
-        toast.error(error?.message)
-      }
-    }
-    handleGetRate()
+      const dispatchAction = dispatch(getRatesAction(selectedSizeValue, selectedTypeValue.toLowerCase()))
+      toast.error(error)
     }, [selectedSizeValue, selectedTypeValue])
+
+
+    // useEffect(() => {
+    // const handleGetRate = async () => {
+    //   try {
+    //     const data = await fetchRateData(selectedSizeValue, selectedTypeValue)
+    //     let rates = []
+    //     for (let key of data){
+    //      rates.push(key)
+    //     }
+    //   } catch (error:any) {
+    //     toast.error(error?.message)
+    //   }
+    // }
+    // handleGetRate()
+    // }, [selectedSizeValue, selectedTypeValue])
   
     const handleButtonChange = (name: string) => {
       setCarrierName(name)
@@ -64,7 +80,7 @@ const RateComponent = () => {
            ))}
         </div>
       </div>        
-      <RateList name={carrierName} data={rateDataState}/>
+      <RateList name={carrierName} data={rateState}/>
     </div>
    }
   </div>
