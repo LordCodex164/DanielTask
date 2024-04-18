@@ -1,4 +1,3 @@
-import React from 'react'
 import { useEffect, useState } from 'react'
 import DropDownComponent from '../../components/common/DropDown/Index'
 import { containerSize } from '../../constants'
