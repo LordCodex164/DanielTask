@@ -7,11 +7,8 @@ import Button from '../../components/common/Button/Index'
 import RateList from '../../components/Rate/RateList'
 import toast from 'react-hot-toast'
 import {PuffLoader} from "react-spinners"
-import { useRateStore } from '../../state/Rate'
 import { useSelector, useDispatch } from 'react-redux'
-import { getRates } from '../../backend-services/Rates'
-import rates from '../../reducers/rates'
-import { getRatesAction } from '../../actions'
+import { getRateByTypeAndSize } from '../../store/actions'
 
 const RateComponent = () => {
 
@@ -33,26 +30,13 @@ const RateComponent = () => {
     const isLoading = useSelector((state:any) => state.rates.isLoading)
     const error = useSelector((state:any) => state.rates.error) 
     
+
+
     useEffect(() => {
-      const dispatchAction = dispatch(getRatesAction(selectedSizeValue, selectedTypeValue.toLowerCase()))
+      dispatch(getRateByTypeAndSize(selectedSizeValue, selectedTypeValue.toLowerCase()))
       toast.error(error)
     }, [selectedSizeValue, selectedTypeValue])
 
-
-    // useEffect(() => {
-    // const handleGetRate = async () => {
-    //   try {
-    //     const data = await fetchRateData(selectedSizeValue, selectedTypeValue)
-    //     let rates = []
-    //     for (let key of data){
-    //      rates.push(key)
-    //     }
-    //   } catch (error:any) {
-    //     toast.error(error?.message)
-    //   }
-    // }
-    // handleGetRate()
-    // }, [selectedSizeValue, selectedTypeValue])
   
     const handleButtonChange = (name: string) => {
       setCarrierName(name)

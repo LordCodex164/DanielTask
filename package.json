@@ -10,23 +10,26 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@redux-devtools/extension": "^3.3.0",
     "axios": "^1.6.7",
+    "package-name": "^0.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.0.1",
+    "react-redux": "^8.0.5",
     "react-spinner": "^0.2.7",
     "react-spinners": "^0.13.8",
-    "zustand": "^4.5.0",
-    "react-redux": "^8.0.5",
     "redux": "^4.2.0",
-    "redux-saga": "^1.2.1"
+    "redux-saga": "^1.2.1",
+    "zustand": "^4.5.0"
   },
   "devDependencies": {
+    "@types/node": "^20.12.7",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
-    "@types/react-spinner": "^0.2.3",
     "@types/react-redux": "^7.1.24",
+    "@types/react-spinner": "^0.2.3",
     "@types/redux-saga": "^0.10.5",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
